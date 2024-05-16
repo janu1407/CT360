@@ -1,0 +1,31 @@
+{% extends "userhome.html" %}
+
+
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Community Name</th>
+            <th>Community Description</th>
+            <th>Community Type</th>
+            <th>Owner</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for i in data %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.communityname}}</td>
+            <td>{{i.communitydescription}}</td>
+            <td>{{i.Communitytype}}</td>
+            <td>{{i.owneremail}}</td>
+            <td><a href="{% url 'Joincommunity' i.id %} ">Join</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

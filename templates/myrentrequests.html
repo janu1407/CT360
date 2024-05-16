@@ -1,0 +1,29 @@
+{% extends "userhome.html" %}
+
+
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>User Email</th>
+            <th>Requested Book</th>
+            <th>Rent Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for i in data %}
+        <tr>
+            <td>{{i.ProductId}}</td>
+            <td>{{i.useremail}}</td>
+            <td>{{i.bookname}}</td>
+            <td>{{i.rentamount}}</td>
+            <td><a href="{% url 'newaccept' i.ProductId %}">{{i.status}}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

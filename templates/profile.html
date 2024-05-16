@@ -1,0 +1,35 @@
+{% extends "userhome.html" %}
+
+{% block content %}
+<br><br>
+
+    <div class="news_section" style="padding-top: 0px;">
+        <div class="container">
+            <div class="background-image"></div>
+            <h1 class="news_taital" style="text-align:center;">My Profile</h1>
+            {% for i in my_profile %}
+                    <div class="row no-gutters">
+                        <div class="col-md-6" style="padding-left:300px;">
+                            <img src="../{{i.photo}}" class="card-img" alt="..." style="width:200px;height: 200px;border-radius:100%;">
+                        </div>
+                         
+                        <div class="col-md-6" style="margin-top:10px;">
+                            <div class="card-body" >
+                                <h5 class="card-title">NAME: {{i.username}}</h5>
+                                <p class="card-text">Email: {{i.useremail}}</p>
+                                <p class="card-text">Contact Number: {{i.contact}}</p>
+                                <p class="card-text">Address: {{i.address}}</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <!-- Additional buttons or content if needed -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %} 

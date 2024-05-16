@@ -1,0 +1,120 @@
+{% extends "userhome.html" %}
+
+{% block extra_css %}
+<style>
+    /* Custom CSS styles */
+    .news_section {
+        background-color: #f9f9f9;
+        padding: 20px;
+    }
+
+    .news_taital {
+        color: #333;
+    }
+
+    .box_main_1 {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .box_main_1:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transition: background-color 0.3s ease;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="news_section">
+    <div class="container">
+        <center>
+            <h1 class="news_taital">Community Details</h1>
+        </center>
+
+        <div class="news_section_2 layout_padding">
+            <div class="row">
+                <div class="col-sm-4" style="padding-top: 20px;">
+                    <div class="box_main_1"
+                        style="background-color: #aed241; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px;">
+                        <h5 class="news_taital" style="color: #333333; text-align: center; margin-bottom: 20px;">Create
+                            New Community</h5>
+                        <div class="padding_15">
+                            <center><a href="{% url 'createcommunity'%}" class="btn btn-primary active"
+                                    aria-current="page">Create</a></center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-top: 20px;">
+                    <div class="box_main_1"
+                        style="background-color: #aed241; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px;">
+                        <h5 class="news_taital" style="color: #333333; text-align: center; margin-bottom: 20px;">View
+                            Joined Member</h5>
+                        <div class="padding_15">
+                            <center><a href="{% url 'viewmember'%}" class="btn btn-primary active"
+                                    aria-current="page">View</a></center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="padding-top: 20px;">
+                    <div class="box_main_1"
+                        style="background-color: #aed241; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 20px;">
+                        <h5 class="news_taital" style="color: #333333; text-align: center; margin-bottom: 20px;">Join
+                            Community </h5>
+                        <div class="padding_15">
+                            <center><a href="{% url 'viewcommunity'%}" class="btn btn-primary active"
+                                    aria-current="page">Join</a></center>
+                        </div>
+                    </div>
+                </div><br><br><br><br>
+                <br><br><br><br>
+              
+
+                <h5 class="news_taital" style="color: #333333; text-align: center; margin-bottom: 20px;">
+                    View Communities</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Community Name</th>
+                            <th>Community Description</th>
+                            <th>Community Type</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for i in data %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.communityname}}</td>
+                            <td>{{i.communitydescription}}</td>
+                            <td>{{i.Communitytype}}</td>
+                            <td>{{i.owneremail}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,44 @@
+{% extends "userhome.html" %}
+
+{% block content %}
+
+<div class="news_section" style="padding-top: 0px;">
+    <div class="container">
+        <h1 class="news_taital">User Request's</h1>
+<!-- Add this line to your template to check if ds is populated -->
+<p></p>
+
+
+        <table width="100%">
+            <tr>
+                <th style="color:rgb(9, 4, 4);text-align:center;">Product Id</th>
+                <th style="color:rgb(9, 4, 4);text-align:center;">User Email</th>
+                <th style="color:rgb(9, 4, 4);text-align:center;">User Order Count</th>
+                <th style="color:rgb(9, 4, 4);text-align:center;">Total Cost</th>
+                <th style="color:rgb(9, 4, 4);text-align:center;">Status</th>
+                <th style="color:rgb(9, 4, 4);text-align:center;">Go For Payment </th>
+            </tr>
+            {% for i in ds %}
+            <tr>
+                <!-- Loop through ds and display data -->
+{% for i in ds %}
+<tr>
+    <td style="color:rgb(9, 4, 4);text-align:center;">{{ i.Product_Id }}</td>
+    <td style="color:rgb(9, 4, 4);text-align:center;">{{ i.user_email }}</td>
+    <td style="color:rgb(9, 4, 4);text-align:center;">{{ i.user_order_count }}</td>
+    <td style="color:rgb(9, 4, 4);text-align:center;">{{ i.user_product_cost }}</td>
+    <td style="color:rgb(9, 4, 4);text-align:center;">{{ i.status }}</td>
+    <td style="color:rgb(9, 4, 4);text-align:center;"><a href="{% url 'pay' i.Product_Id %}">Pay</a></td>
+</tr>
+{% endfor %}
+
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

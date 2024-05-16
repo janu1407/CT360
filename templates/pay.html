@@ -1,0 +1,92 @@
+{% extends "userhome.html" %}
+{% block content %}
+
+<!-- Reservation Start -->
+<div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="row g-0">
+        <div class="col-md-6">
+            <div class="video">
+                <img src="/static/img/about-3.jpg" alt="Description of the image" style="
+                width: 682px;
+            ">
+            </div>
+        </div>
+        <div class="col-md-6 bg-dark d-flex align-items-center">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <center><h1 class="text-white mb-4">Payment Page</h1></center>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <center>
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color:white">{{ message }}
+                        </li>
+                    </center>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form action="{% url 'allpayment' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <input type="text" style="text-align:center" class="email-bt" name="productid" value="{{id}}" hidden>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="cardname" name="cardname" placeholder="Card name" required>
+                                <label for="name">Card name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" pattern="[0-9]{16}" class="form-control" placeholder="Card Number"
+                                name="cardnumber" id="cardnumber" required>
+                                <label for="name">Card Number</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" pattern="[0-9]{3}" id="cvv" placeholder=">CVV Number"
+                                name="cvv" required>
+                                <label for="email">CVV Number</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control"  value="{{cost}}" name="totalprice" placeholder="Product Description"
+                                name="totalprice" readonly>
+                                <label for="email">Amount</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+
+            
+    </div>
+</div>
+
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                        allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reservation Start -->
+
+
+
+
+        {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "userhome.html" %}
+
+{% block content %}
+
+<div class="news_section" style="padding-top: 0px;">
+    <div class="container">
+        <h1 class="news_taital">User Request's</h1>
+
+
+        <table width="100%">
+            <tr>
+                <th style="color:rgb(3, 9, 14);text-align:center;">Product Id</th>
+                <th style="color:rgb(3, 9, 14);text-align:center;">User Email</th>
+                
+                <th style="color:rgb(3, 9, 14);text-align:center;">Total Cost</th>
+                
+                <th style="color:rgb(3, 9, 14);text-align:center;"> Payment</th>
+            </tr>
+            {% for i in dc %}
+            <tr>
+                <td style="color:rgb(3, 9, 14);text-align:center;">{{i.Productid}}</td>
+                <td style="color:rgb(3, 9, 14);text-align:center;">{{i.email}}</td>
+                <td style="color:rgb(3, 9, 14);text-align:center;">{{i.totalprice}}</td>
+                <td style="color:rgb(3, 9, 14);text-align:center;">Completed</td>
+                
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

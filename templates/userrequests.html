@@ -1,0 +1,36 @@
+{% extends "userhome.html" %}
+
+{% block content %}
+
+<div class="news_section" style="padding-top: 0px;">
+    <div class="container">
+        <h1 class="news_taital">User Request's</h1>
+
+
+        <table width="100%">
+            <tr>
+                <th style="color:rgb(2, 10, 10);text-align:center;">Product Id</th>
+                <th style="color:rgb(2, 10, 10);text-align:center;">User Email</th>
+                <th style="color:rgb(2, 10, 10);text-align:center;">User Order Count</th>
+                <th style="color:rgb(2, 10, 10);text-align:center;">Total Cost</th>
+                <th style="color:rgb(2, 10, 10);text-align:center;">Status</th>
+                <th style="color:rgb(2, 10, 10);text-align:center;">View Payment</th>
+            </tr>
+            {% for i in users_order %}
+            <tr>
+                <td style="color:rgb(2, 10, 10);text-align:center;">{{i.Product_Id}}</td>
+                <td style="color:rgb(2, 10, 10);text-align:center;">{{i.user_email}}</td>
+                <td style="color:rgb(2, 10, 10);text-align:center;">{{i.user_order_count}}</td>
+                <td style="color:rgb(2, 10, 10);text-align:center;">{{i.user_product_cost}}</td>
+                <td style="color:rgb(2, 10, 10);text-align:center;"><a href="{% url 'acceptproduct' i.Product_Id i.user_email %}" class="btn btn-secondary">{{i.status}}</a></td>
+                <td style="color:rgb(2, 10, 10);text-align:center;"><a href="{% url 'viewallpayments' i.Product_Id %}">view</a></td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}
